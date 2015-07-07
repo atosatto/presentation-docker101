@@ -21,63 +21,67 @@ html
           br
           a(href='https://twitter.com/_hilbert_') 
             small @_hilbert_
-        
+      
       +slide('vertical-wipe-in vertical-wipe-out background-blue title')
         h1 Docker 101
           small Coding, testing, shipping with Docker
+      
+      +slide('vertical-wipe-in vertical-wipe-out background-white')
+        h1 Inside the docker-engine
+          small (linux edition)
+          
+      +slide('horizontal-wipe-in horizontal-wipe-out background-white')
+        h2 Heavyweight vs Lightweight Virtualization
+        img.full(src='images/docker_vm.png')
+          
+      +slide('horizontal-wipe-in horizontal-wipe-out background-white')
+        .bullet 
+          h1 LXC
+        .bullet 
+          h2 LXC let you run a Linux system within another Linux system
+          br
+        .bullet 
+          h2 A container is a group of processes put together in an isolated environment 
+          .small (<em>namespace</em>)
 
-      section
-        h2 Keyboard Interaction
-        h3 Powered by <a href="https://github.com/markdalgleish/bespoke-keys">bespoke-keys</a>
-
-      section
-        h2 Touch Interaction
-        h3 Powered by <a href="https://github.com/markdalgleish/bespoke-touch">bespoke-touch</a>
-
-      section
-        h2 Responsive Slides
-        h3 Powered by <a href="https://github.com/markdalgleish/bespoke-scale">bespoke-scale</a>
-
-      section
-        h2 Bullet List
-        h3.bullet Powered by <a href="https://github.com/markdalgleish/bespoke-bullets">bespoke-bullets</a>
-        ul
-          li Bullet 1
-          li Bullet 2
-          li Bullet 3
-
-      section
-        h2 Syntax Highlighting
-        h3 Powered by <a href="http://twitter.com/LeaVerou">Lea Verou</a>'s <a href="https://github.com/LeaVerou/prism">Prism</a>
-        pre
-          code.language-javascript.
-            bespoke.from('article', [
-              classes(),
-              keys(),
-              touch(),
-              bullets('li, .bullet')
-            ]);
-
-      section(data-bespoke-hash='named-route')
-        h2 Named Route
-        h3 Powered by <a href="https://github.com/markdalgleish/bespoke-hash">bespoke-hash</a>
-        p Look up! This route has been named with a <em>'data-bespoke-hash'</em> attribute.
-
-      section.emphatic-text(data-bespoke-backdrop='emphatic')
-        h2 Emphatic Slide!
-        h3 Powered by <a href="https://github.com/markdalgleish/bespoke-backdrop">bespoke-backdrop</a>
-
-      section
-        h2.bullet Just the beginning...
-        br
-        ul
-          li Edit <a href="http://jade-lang.com/">Jade</a> markup in <em>'src/index.jade'</em>
-          li Edit <a href="http://learnboost.github.io/stylus/">Stylus</a> styles in <em>'src/styles/main.styl'</em>
-          li Edit JavaScript in <em>'src/scripts/main.js'</em>
-        br
-        ul
-          li
-            strong Enjoy! :)
-            a(href='http://twitter.com/markdalgleish')  -@markdalgleish
+      +slide('horizontal-wipe-in horizontal-wipe-out background-white')
+        .bullet
+          img.avatar(src='images/jpetazzo.jpg')
+          blockquote &ldquo;This is <em>chroot</em> on steroids&rdquo;
+        h3.bullet
+          cite Jérôme Petazzoni
+          div Lightweight Virtualization LXC containers & AUFS - SCALE11x 2013, Los Angeles
+          
+      +slide('horizontal-wipe-in horizontal-wipe-out background-white')
+        h1
+          .bullet cGroups
+        h2
+          .bullet Expose a virtual file-system to
+          .bullet Limit,
+          .bullet Account,
+          .bullet Isolate
+          .bullet the resources used by a process.
+      
+      +slide('horizontal-wipe-in horizontal-wipe-out background-white')
+        h1 AUFS
+        img.full(src='images/docker-filesystems-multiroot.png')
+  
+      +slide('horizontal-wipe-in horizontal-wipe-out background-white')
+        h1 AUFS
+        img.full(src='images/docker-filesystems-busyboxrw.png')
+      
+      +slide('vertical-wipe-in vertical-wipe-out background-white')
+        h1 Coding with Docker
+      
+      +slide('vertical-wipe-in vertical-wipe-out background-white')
+        h1 Testing with Docker
+      
+      +slide('vertical-wipe-in vertical-wipe-out background-white')
+        h1 Shipping with Docker
+      
+      +slide('horizontal-wipe-in horizontal-wipe-out background-yellow')
+        h1 Thank you!
+        h2
+          a(href='http://bit.ly/gettingcontext') bit.ly/gettingcontext
 
     script(src='build/build.js')

@@ -28,10 +28,11 @@ then...
 
 #### On OsX
 
-Install socat
+Install socat and xQuartz
 
 ```bash
 $ brew install socat
+$ brew cask install xquartz
 ```
 
 Start socat to expose local xquartz socket on a TCP port
