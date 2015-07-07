@@ -15,10 +15,16 @@ html
 
     article
 
-      +slide('vertical-wipe-in vertical-wipe-out background-white title')
+      +slide('vertical-wipe-in vertical-wipe-out background-white cover')
+        img.avatar(src='images/profile.png')
+        h2 Andrea Tosatto
+          br
+          a(href='https://twitter.com/_hilbert_') 
+            small @_hilbert_
+        
+      +slide('vertical-wipe-in vertical-wipe-out background-blue title')
         h1 Docker 101
-        small Coding, testing, shipping with Docker
-        img.cover(src='images/docker_island.png')
+          small Coding, testing, shipping with Docker
 
       section
         h2 Keyboard Interaction

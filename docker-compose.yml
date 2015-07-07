@@ -4,7 +4,7 @@ chrome:
   cpuset: 0               # control the cpu
   mem_limit: 512mb        # max memory it can use
   environment:
-  - DISPLAY=unix$DISPLAY  # pass the display
+  - DISPLAY=192.168.59.3:0  # pass the display
   volumes:
   - /tmp/.X11-unix:/tmp/.X11-unix    # mount the X11 socket
   - $HOME/Downloads:/root/Downloads  # saving the downloads in the host Download folder
