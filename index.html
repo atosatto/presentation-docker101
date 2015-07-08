@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Docker 101 - Coding, testing, shipping with Docker</title>
+    <link rel="stylesheet" type="text/css" href="build/build.css">
+  </head>
+  <body>
+    <article>
+      <section data-bespoke-background="vertical-wipe-in vertical-wipe-out background-white cover" class="vertical-wipe-in vertical-wipe-out background-white cover"><img src="images/profile.png" class="avatar">
+        <h2>Andrea Tosatto<br><a href="https://twitter.com/_hilbert_"><small>@_hilbert_</small></a></h2>
+      </section>
+      <section data-bespoke-background="vertical-wipe-in vertical-wipe-out background-blue title" class="vertical-wipe-in vertical-wipe-out background-blue title">
+        <h1>Docker 101<small>Coding, testing, shipping with Docker</small></h1>
+      </section>
+      <section data-bespoke-background="vertical-wipe-in vertical-wipe-out background-white" class="vertical-wipe-in vertical-wipe-out background-white">
+        <h1>Inside the docker-engine<small>(linux edition)</small></h1>
+      </section>
+      <section data-bespoke-background="horizontal-wipe-in horizontal-wipe-out background-white" class="horizontal-wipe-in horizontal-wipe-out background-white">
+        <h2>Heavyweight vs Lightweight Virtualization</h2><img src="images/docker_vm.png" class="full">
+      </section>
+      <section data-bespoke-background="horizontal-wipe-in horizontal-wipe-out background-white" class="horizontal-wipe-in horizontal-wipe-out background-white">
+        <div class="bullet">
+          <h1>LXC</h1>
+        </div>
+        <div class="bullet">
+          <h2>LXC let you run a Linux system within another Linux system</h2><br>
+        </div>
+        <div class="bullet">
+          <h2>A container is a group of processes put together in an isolated environment </h2>
+          <div class="small">(<em>namespace</em>)</div>
+        </div>
+      </section>
+      <section data-bespoke-background="horizontal-wipe-in horizontal-wipe-out background-white" class="horizontal-wipe-in horizontal-wipe-out background-white">
+        <div class="bullet"><img src="images/jpetazzo.jpg" class="avatar">
+          <blockquote>&ldquo;This is <em>chroot</em> on steroids&rdquo;</blockquote>
+        </div>
+        <h3 class="bullet">
+          <cite>Jérôme Petazzoni</cite>
+          <div>Lightweight Virtualization LXC containers & AUFS - SCALE11x 2013, Los Angeles</div>
+        </h3>
+      </section>
+      <section data-bespoke-background="horizontal-wipe-in horizontal-wipe-out background-white" class="horizontal-wipe-in horizontal-wipe-out background-white">
+        <h1>
+          <div class="bullet">cGroups</div>
+        </h1>
+        <h2>
+          <div class="bullet">Expose a virtual file-system to</div>
+          <div class="bullet">Limit,</div>
+          <div class="bullet">Account,</div>
+          <div class="bullet">Isolate</div>
+          <div class="bullet">the resources used by a process.</div>
+        </h2>
+      </section>
+      <section data-bespoke-background="horizontal-wipe-in horizontal-wipe-out background-white" class="horizontal-wipe-in horizontal-wipe-out background-white">
+        <h1>AUFS</h1><img src="images/docker-filesystems-multiroot.png" class="full">
+      </section>
+      <section data-bespoke-background="horizontal-wipe-in horizontal-wipe-out background-white" class="horizontal-wipe-in horizontal-wipe-out background-white">
+        <h1>AUFS</h1><img src="images/docker-filesystems-busyboxrw.png" class="full">
+      </section>
+      <section data-bespoke-background="vertical-wipe-in vertical-wipe-out background-white" class="vertical-wipe-in vertical-wipe-out background-white">
+        <h1>Coding with Docker</h1>
+      </section>
+      <section data-bespoke-background="vertical-wipe-in vertical-wipe-out background-white" class="vertical-wipe-in vertical-wipe-out background-white">
+        <h1>Testing with Docker</h1>
+      </section>
+      <section data-bespoke-background="vertical-wipe-in vertical-wipe-out background-white" class="vertical-wipe-in vertical-wipe-out background-white">
+        <h1>Shipping with Docker</h1>
+      </section>
+      <section data-bespoke-background="horizontal-wipe-in horizontal-wipe-out background-yellow" class="horizontal-wipe-in horizontal-wipe-out background-yellow">
+        <h1>Thank you!</h1>
+        <h2><a href="http://bit.ly/gettingcontext">bit.ly/gettingcontext</a></h2>
+      </section>
+    </article>
+    <script src="build/build.js"></script>
+  </body>
+</html>
