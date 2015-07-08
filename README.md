@@ -65,17 +65,3 @@ obtained in the previous step in order to pass the display to container
 environment:
 - DISPLAY=_IP_:0  # pass the display
 ```
-
-### On Linux
-
-Install socat
-
-```bash
-$ brew install socat
-```
-
-Then, run the slides with:
-
-```bash
-$ docker-compose up
-```

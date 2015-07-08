@@ -34,15 +34,15 @@ html
         h2 Heavyweight vs Lightweight Virtualization
         img.full(src='images/docker_vm.png')
           
-      +slide('horizontal-wipe-in horizontal-wipe-out background-white')
-        .bullet 
-          h1 LXC
-        .bullet 
-          h2 LXC let you run a Linux system within another Linux system
+      +slide('horizontal-wipe-in horizontal-wipe-out background-white')    
+        h1
+          .bullet LXC
+        h2
+          .bullet LXC let you run a Linux system within another Linux system
           br
-        .bullet 
-          h2 A container is a group of processes put together in an isolated environment 
-          .small (<em>namespace</em>)
+          .bullet A container is a group of processes put together in an isolated environment 
+        .small 
+          .bullet (<em>namespaces</em>)
 
       +slide('horizontal-wipe-in horizontal-wipe-out background-white')
         .bullet
@@ -63,12 +63,16 @@ html
           .bullet the resources used by a process.
       
       +slide('horizontal-wipe-in horizontal-wipe-out background-white')
-        h1 AUFS
-        img.full(src='images/docker-filesystems-multiroot.png')
-  
+        h1 
+          .bullet AUFS
+        h2
+          .bullet Takes an existing filesystem and transparently overlays it on a newer filesystem
+          br
+          .bullet Merges several directories and provide a single merged view of it.
+      
       +slide('horizontal-wipe-in horizontal-wipe-out background-white')
         h1 AUFS
-        img.full(src='images/docker-filesystems-busyboxrw.png')
+        img.full(src='images/docker-aufs.png')
       
       +slide('vertical-wipe-in vertical-wipe-out background-white')
         h1 Coding with Docker
@@ -82,6 +86,6 @@ html
       +slide('horizontal-wipe-in horizontal-wipe-out background-yellow')
         h1 Thank you!
         h2
-          a(href='http://bit.ly/gettingcontext') bit.ly/gettingcontext
+          a(href='https://github.com/hilbert-/presentation-docker101') https://github.com/hilbert-/presentation-docker101
 
     script(src='build/build.js')

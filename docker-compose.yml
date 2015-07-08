@@ -1,10 +1,14 @@
+docker101:
+  build: .
+  ports:
+    - "8080:8080"
+
 chrome:
   image: jess/chrome
-  net: host               # use the host's network to reach the web
-  cpuset: 0               # control the cpu
-  mem_limit: 512mb        # max memory it can use
+  net: host                   # use the host's network to reach the web
+  cpuset: 0                   # control the cpu
+  mem_limit: 1024mb           # max memory it can use
   environment:
-  - DISPLAY=192.168.59.3:0  # pass the display
-  volumes:
-  - /tmp/.X11-unix:/tmp/.X11-unix    # mount the X11 socket
-  - $HOME/Downloads:/root/Downloads  # saving the downloads in the host Download folder
+    - DISPLAY=192.168.59.3:0  # pass the display
+  command:                    # start in kiosk mode the presentation
+    "--user-data-dir=/data --no-sandbox --disable-gpu --kiosk 127.0.0.1:8080"
