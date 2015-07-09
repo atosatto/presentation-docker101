@@ -18,28 +18,19 @@
         <h1>Inside the docker-engine<small>(linux edition)</small></h1>
       </section>
       <section data-bespoke-background="horizontal-wipe-in horizontal-wipe-out background-white" class="horizontal-wipe-in horizontal-wipe-out background-white">
-        <h2>Heavyweight vs Lightweight Virtualization</h2><img src="images/docker_vm.png" class="full">
+        <h2 style="color: #2478AC">Heavyweight vs Lightweight Virtualization</h2><img src="images/docker_vm.png" class="full">
       </section>
-      <section data-bespoke-background="horizontal-wipe-in horizontal-wipe-out background-white" class="horizontal-wipe-in horizontal-wipe-out background-white">
-        <div class="bullet">
-          <h1>LXC</h1>
+      <section data-bespoke-background="horizontal-wipe-in horizontal-wipe-out background-white" class="horizontal-wipe-in horizontal-wipe-out background-white">   
+        <h1>
+          <div class="bullet">LXC</div>
+        </h1>
+        <h2>
+          <div class="bullet">LXC let you run a Linux system within another Linux system</div><br>
+          <div class="bullet">A container is a group of processes put together in an isolated environment </div>
+        </h2>
+        <div class="small">
+          <div class="bullet">(<em>namespace</em>)</div>
         </div>
-        <div class="bullet">
-          <h2>LXC let you run a Linux system within another Linux system</h2><br>
-        </div>
-        <div class="bullet">
-          <h2>A container is a group of processes put together in an isolated environment </h2>
-          <div class="small">(<em>namespace</em>)</div>
-        </div>
-      </section>
-      <section data-bespoke-background="horizontal-wipe-in horizontal-wipe-out background-white" class="horizontal-wipe-in horizontal-wipe-out background-white">
-        <div class="bullet"><img src="images/jpetazzo.jpg" class="avatar">
-          <blockquote>&ldquo;This is <em>chroot</em> on steroids&rdquo;</blockquote>
-        </div>
-        <h3 class="bullet">
-          <cite>Jérôme Petazzoni</cite>
-          <div>Lightweight Virtualization LXC containers & AUFS - SCALE11x 2013, Los Angeles</div>
-        </h3>
       </section>
       <section data-bespoke-background="horizontal-wipe-in horizontal-wipe-out background-white" class="horizontal-wipe-in horizontal-wipe-out background-white">
         <h1>
@@ -54,23 +45,147 @@
         </h2>
       </section>
       <section data-bespoke-background="horizontal-wipe-in horizontal-wipe-out background-white" class="horizontal-wipe-in horizontal-wipe-out background-white">
-        <h1>AUFS</h1><img src="images/docker-filesystems-multiroot.png" class="full">
+        <h1>
+          <div class="bullet">AUFS</div>
+        </h1>
+        <h2>
+          <div class="bullet">Takes an existing filesystem and transparently overlays it on a newer filesystem</div><br>
+          <div class="bullet">Merges several directories and provide a single merged view of it.</div>
+        </h2>
       </section>
       <section data-bespoke-background="horizontal-wipe-in horizontal-wipe-out background-white" class="horizontal-wipe-in horizontal-wipe-out background-white">
-        <h1>AUFS</h1><img src="images/docker-filesystems-busyboxrw.png" class="full">
+        <h1>AUFS</h1><img src="images/docker-aufs.png" class="full">
       </section>
-      <section data-bespoke-background="vertical-wipe-in vertical-wipe-out background-white" class="vertical-wipe-in vertical-wipe-out background-white">
+      <section data-bespoke-background="horizontal-wipe-in horizontal-wipe-out background-white" class="horizontal-wipe-in horizontal-wipe-out background-white">
         <h1>Coding with Docker</h1>
+      </section>
+      <section data-bespoke-background="horizontal-wipe-in horizontal-wipe-out background-white" class="horizontal-wipe-in horizontal-wipe-out background-white">
+        <h1>Dockerfile</h1>
+        <pre class="language-docker"><code>FROM google/nodejs
+
+RUN npm install -g gulp bower
+RUN echo '{ "allow_root": true }' > /root/.bowerrc
+
+WORKDIR /presentation
+ADD . /presentation
+
+RUN npm install && bower install
+
+EXPOSE 8080
+CMD [ ]
+ENTRYPOINT ["gulp", "connect"]
+</code></pre>
+      </section>
+      <section data-bespoke-background="horizontal-wipe-in horizontal-wipe-out background-white" class="horizontal-wipe-in horizontal-wipe-out background-white">
+        <h1>FROM</h1><img src="images/docker-filesystems-busyboxrw.png" class="full">
+      </section>
+      <section data-bespoke-background="horizontal-wipe-in horizontal-wipe-out background-white" class="horizontal-wipe-in horizontal-wipe-out background-white">
+        <h1>
+          <div class="bullet"> RUN</div>
+        </h1>
+        <h2>
+          <div class="bullet">Executes shell scripts trasforming the base image's file-system</div><br>
+          <div class="bullet">Every RUN is actually new AUFS layer</div>
+        </h2>
+      </section>
+      <section data-bespoke-background="horizontal-wipe-in horizontal-wipe-out background-white" class="horizontal-wipe-in horizontal-wipe-out background-white">
+        <h1>
+          <div class="bullet"> ADD</div>
+        </h1>
+        <h2>
+          <div class="bullet">Copies new files or directories and adds them to the filesystem of the container at the given path</div>
+        </h2>
+      </section>
+      <section data-bespoke-background="horizontal-wipe-in horizontal-wipe-out background-white" class="horizontal-wipe-in horizontal-wipe-out background-white">
+        <h1>
+          <div class="bullet"> ENV</div>
+        </h1>
+        <h2>
+          <div class="bullet">Sets an environment variable into the container</div><br>
+          <div class="bullet">Used to pass configuration options to applications</div><br>
+          <div class="bullet"><a href="http://12factor.net/">12factor.net</a></div>
+        </h2>
+      </section>
+      <section data-bespoke-background="horizontal-wipe-in horizontal-wipe-out background-white" class="horizontal-wipe-in horizontal-wipe-out background-white">
+        <h1>
+          <div class="bullet"> EXPOSE</div>
+        </h1>
+        <h2>
+          <div class="bullet">Informs Docker that the container will listen on the specified network ports at runtime</div><br>
+          <div class="bullet">To map those ports to the host, at runtime, use the <em>-p</em> flag</div>
+        </h2>
+      </section>
+      <section data-bespoke-background="horizontal-wipe-in horizontal-wipe-out background-gif background-gif-build" class="horizontal-wipe-in horizontal-wipe-out background-gif background-gif-build">
+        <h1>
+          <div class="bullet">docker build</div>
+        </h1>
+      </section>
+      <section data-bespoke-background="horizontal-wipe-in horizontal-wipe-out background-gif background-gif-run" class="horizontal-wipe-in horizontal-wipe-out background-gif background-gif-run">
+        <h1>
+          <div class="bullet">docker run</div>
+        </h1>
       </section>
       <section data-bespoke-background="vertical-wipe-in vertical-wipe-out background-white" class="vertical-wipe-in vertical-wipe-out background-white">
         <h1>Testing with Docker</h1>
       </section>
       <section data-bespoke-background="vertical-wipe-in vertical-wipe-out background-white" class="vertical-wipe-in vertical-wipe-out background-white">
+        <h1>
+          <div class="bullet">Dockerfile.test</div>
+        </h1>
+        <h2> 
+          <div class="bullet">Easy build, run, test and discard worflow</div><br>
+          <div class="bullet">Test, Dev and Prod environments are the same, for real!</div><br>
+          <div class="bullet">Runtime environment versioning</div>
+        </h2>
+      </section>
+      <section data-bespoke-background="vertical-wipe-in vertical-wipe-out background-white" class="vertical-wipe-in vertical-wipe-out background-white">
+        <h1>
+          <div class="bullet">An example..</div>
+        </h1>
+        <pre class="language-docker"><code>FROM hilbert/docker101:latest
+
+RUN npm install karma --save-dev
+RUN npm install karma-jasmine --save-dev
+
+ENTRYPOINT ["./node_modules/karma/bin/karma", "start"]
+</code></pre>
+      </section>
+      <section data-bespoke-background="vertical-wipe-in vertical-wipe-out background-white" class="vertical-wipe-in vertical-wipe-out background-white">
         <h1>Shipping with Docker</h1>
       </section>
-      <section data-bespoke-background="horizontal-wipe-in horizontal-wipe-out background-yellow" class="horizontal-wipe-in horizontal-wipe-out background-yellow">
-        <h1>Thank you!</h1>
-        <h2><a href="http://bit.ly/gettingcontext">bit.ly/gettingcontext</a></h2>
+      <section data-bespoke-background="vertical-wipe-in vertical-wipe-out background-gif background-gif-hub" class="vertical-wipe-in vertical-wipe-out background-gif background-gif-hub">
+        <h1>
+          <div class="bullet">Docker Hub</div>
+        </h1>
+      </section>
+      <section data-bespoke-background="horizontal-wipe-in horizontal-wipe-out background-gif background-gif-push" class="horizontal-wipe-in horizontal-wipe-out background-gif background-gif-push">
+        <h1>docker push</h1>
+      </section>
+      <section data-bespoke-background="horizontal-wipe-in horizontal-wipe-out background-gif background-gif-pull" class="horizontal-wipe-in horizontal-wipe-out background-gif background-gif-pull">
+        <h1>docker pull</h1>
+      </section>
+      <section data-bespoke-background="vertical-wipe-in vertical-wipe-out background-gif background-gif-pull" class="vertical-wipe-in vertical-wipe-out background-gif background-gif-pull">
+        <h1>To Recap</h1>
+      </section>
+      <section data-bespoke-background="vertical-wipe-in vertical-wipe-out background-white" class="vertical-wipe-in vertical-wipe-out background-white">
+        <h1>
+          <div class="bullet">Docker is...</div>
+        </h1>
+        <h2>
+          <div class="bullet">simple, cool and fun!</div>
+        </h2>
+        <h1>
+          <div class="bullet">But</div>
+        </h1>
+        <h2>
+          <div class="bullet">Do you trust it?!</div>
+        </h2>
+      </section>
+      <section data-bespoke-background="horizontal-wipe-in horizontal-wipe-out background-white" class="horizontal-wipe-in horizontal-wipe-out background-white">
+        <h1>Thank you!</h1><img src="images/docker-friends.png" class="full">
+      </section>
+      <section data-bespoke-background="horizontal-wipe-in horizontal-wipe-out background-white" class="horizontal-wipe-in horizontal-wipe-out background-white"><img src="images/profile.png" class="avatar">
+        <h2><a href="https://github.com/hilbert-/presentation-docker101">hilbert-/presentation-docker101</a></h2>
       </section>
     </article>
     <script src="build/build.js"></script>
