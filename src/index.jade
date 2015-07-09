@@ -31,7 +31,7 @@ html
           small (linux edition)
           
       +slide('horizontal-wipe-in horizontal-wipe-out background-white')
-        h2 Heavyweight vs Lightweight Virtualization
+        h2(style="color: #2478AC") Heavyweight vs Lightweight Virtualization
         img.full(src='images/docker_vm.png')
           
       +slide('horizontal-wipe-in horizontal-wipe-out background-white')    
@@ -42,16 +42,16 @@ html
           br
           .bullet A container is a group of processes put together in an isolated environment 
         .small 
-          .bullet (<em>namespaces</em>)
+          .bullet (<em>namespace</em>)
 
-      +slide('horizontal-wipe-in horizontal-wipe-out background-white')
-        .bullet
-          img.avatar(src='images/jpetazzo.jpg')
-          blockquote &ldquo;This is <em>chroot</em> on steroids&rdquo;
-        h3.bullet
-          cite Jérôme Petazzoni
-          div Lightweight Virtualization LXC containers & AUFS - SCALE11x 2013, Los Angeles
-          
+      //- +slide('horizontal-wipe-in horizontal-wipe-out background-white')
+      //-   div
+      //-     img.avatar(src='images/jpetazzo.jpg')
+      //-     blockquote &ldquo;This is <em>chroot</em> on steroids&rdquo;
+      //-   h3
+      //-     cite Jérôme Petazzoni
+      //-     div Lightweight Virtualization LXC containers & AUFS - SCALE11x 2013, Los Angeles
+     
       +slide('horizontal-wipe-in horizontal-wipe-out background-white')
         h1
           .bullet cGroups
@@ -74,18 +74,130 @@ html
         h1 AUFS
         img.full(src='images/docker-aufs.png')
       
-      +slide('vertical-wipe-in vertical-wipe-out background-white')
+      +slide('horizontal-wipe-in horizontal-wipe-out background-white')
         h1 Coding with Docker
+      
+      +slide('horizontal-wipe-in horizontal-wipe-out background-white')
+        h1 Dockerfile
+        pre.language-docker
+          code.
+            FROM google/nodejs
+
+            RUN npm install -g gulp bower
+            RUN echo '{ "allow_root": true }' > /root/.bowerrc
+
+            WORKDIR /presentation
+            ADD . /presentation
+            
+            RUN npm install && bower install
+
+            EXPOSE 8080
+            CMD [ ]
+            ENTRYPOINT ["gulp", "connect"]
+          
+      +slide('horizontal-wipe-in horizontal-wipe-out background-white')
+        h1 FROM
+        img.full(src='images/docker-filesystems-busyboxrw.png')
+        
+      +slide('horizontal-wipe-in horizontal-wipe-out background-white')
+        h1
+          .bullet  RUN
+        h2
+          .bullet Executes shell scripts trasforming the base image's file-system
+          br  
+          .bullet Every RUN is actually new AUFS layer
+      
+      +slide('horizontal-wipe-in horizontal-wipe-out background-white')
+        h1
+          .bullet  ADD
+        h2
+          .bullet Copies new files or directories and adds them to the filesystem of the container at the given path
+      
+      +slide('horizontal-wipe-in horizontal-wipe-out background-white')
+        h1
+          .bullet  ENV
+        h2
+          .bullet Sets an environment variable into the container
+          br
+          .bullet Used to pass configuration options to applications
+          br
+          .bullet 
+            a(href="http://12factor.net/") 12factor.net
+      
+      +slide('horizontal-wipe-in horizontal-wipe-out background-white')
+        h1
+          .bullet  EXPOSE
+        h2
+          .bullet Informs Docker that the container will listen on the specified network ports at runtime
+          br
+          .bullet To map those ports to the host, at runtime, use the <em>-p</em> flag
+      
+      +slide('horizontal-wipe-in horizontal-wipe-out background-gif background-gif-build')
+        h1
+          .bullet docker build
+        
+      +slide('horizontal-wipe-in horizontal-wipe-out background-gif background-gif-run')
+        h1 
+          .bullet docker run
       
       +slide('vertical-wipe-in vertical-wipe-out background-white')
         h1 Testing with Docker
+          
+      +slide('vertical-wipe-in vertical-wipe-out background-white')
+        h1
+          .bullet Dockerfile.test
+        h2  
+          .bullet Easy build, run, test and discard worflow
+          br
+          .bullet Test, Dev and Prod environments are the same, for real!
+          br
+          .bullet Runtime environment versioning
+        
+      +slide('vertical-wipe-in vertical-wipe-out background-white')
+        h1
+          .bullet An example..
+        pre.language-docker
+          code.
+            FROM hilbert/docker101:latest
+      
+            RUN npm install karma --save-dev
+            RUN npm install karma-jasmine --save-dev
+        
+            ENTRYPOINT ["./node_modules/karma/bin/karma", "start"]
       
       +slide('vertical-wipe-in vertical-wipe-out background-white')
         h1 Shipping with Docker
+        
+      +slide('vertical-wipe-in vertical-wipe-out background-gif background-gif-hub')
+        h1
+          .bullet Docker Hub
+            
+      +slide('horizontal-wipe-in horizontal-wipe-out background-gif background-gif-push')
+        h1 docker push
       
-      +slide('horizontal-wipe-in horizontal-wipe-out background-yellow')
-        h1 Thank you!
+      +slide('horizontal-wipe-in horizontal-wipe-out background-gif background-gif-pull')
+        h1 docker pull
+        
+      +slide('vertical-wipe-in vertical-wipe-out background-gif background-gif-pull')
+        h1 To Recap
+        
+      +slide('vertical-wipe-in vertical-wipe-out background-white')
+        h1 
+          .bullet Docker is...
         h2
-          a(href='https://github.com/hilbert-/presentation-docker101') https://github.com/hilbert-/presentation-docker101
+          .bullet simple, cool and fun!
+        h1
+          .bullet But
+        h2
+          .bullet Do you trust it?!
+      
+      +slide('horizontal-wipe-in horizontal-wipe-out background-white')
+        h1 Thank you!
+        img.full(src='images/docker-friends.png')
+      
+      +slide('horizontal-wipe-in horizontal-wipe-out background-white')
+        img.avatar(src='images/profile.png')
+        h2
+          a(href='https://github.com/hilbert-/presentation-docker101') hilbert-/presentation-docker101
 
     script(src='build/build.js')
